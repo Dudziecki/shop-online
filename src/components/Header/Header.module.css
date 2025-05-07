@@ -1,0 +1,118 @@
+.header {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+     /* Темный фон, как на скриншоте */
+    height: 60px; /* Высота хедера */
+}
+
+/* Логотип */
+.logo img {
+    height: 30px; /* Размер логотипа */
+}
+
+/* Информация о пользователе */
+.info {
+    display: flex;
+    align-items: center;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между аватаром и именем */
+}
+
+.avatar {
+    width: 40px; /* Размер аватара */
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%; /* Круглый аватар */
+    border: 1px solid #fff; /* Белая обводка, как на скриншоте */
+}
+
+.username {
+    color: #fff; /* Белый цвет текста */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Поисковая форма */
+.searchForm {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Занимает доступное пространство */
+    max-width: 400px; /* Максимальная ширина поисковой строки */
+    background-color: #191919; /* Темный фон для формы */
+    border-radius: 20px; /* Скругленные углы */
+    padding: 5px 10px;
+    margin: 0 20px; /* Отступы по бокам */
+    /*border: 2px solid red;*/
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.inputWrapper {
+    flex: 1;
+}
+
+.inputWrapper input {
+    width: 100%;
+    /*background: none;*/
+    background-color: #191919;
+    border: none;
+    color: #fff; /* Белый цвет текста */
+    font-size: 14px;
+    outline: none;
+}
+
+.inputWrapper input::placeholder {
+    /*color: #b8b8b8; !* Серый цвет плейсхолдера *!*/
+}
+
+/* Иконки справа */
+.account {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Расстояние между иконками */
+}
+
+.account svg {
+    width: 24px;
+    height: 24px;
+    stroke: #b8b8b8; /* Цвет иконок */
+}
+
+.cartLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #8b5cf6; /* Фиолетовый цвет бейджа */
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
