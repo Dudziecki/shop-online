@@ -14,14 +14,15 @@ export const Footer = () => {
       </div>
 
       <div className={s.rights}>
-        Developed by{""}
+        Developed by
         <a
           href="#"
           target="_blank"
           rel="noreferrer"
         > Michael Dudik</a>
       </div>
-      <div className="socials">
+
+      <div className={s.socials}>
         <a href="#" target="_blank" rel="noreferrer">
           <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
