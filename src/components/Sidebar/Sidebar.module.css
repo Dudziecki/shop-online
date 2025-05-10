@@ -7,9 +7,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: auto;
-    /*min-height: 100vh;*/
+    height: auto; /* Оставляем высоту автоматической */
     font-family: "Montserrat", sans-serif;
+    grid-row: 1;
+      grid-column: 1;
 }
 
 .title {
@@ -28,8 +29,9 @@
     padding: 0;
     margin: 20px 0;
 }
-.link:first-child{
-    color: #8b57c6;;
+
+.link:first-child {
+    color: #8b57c6;
 }
 
 .link {

@@ -7,7 +7,7 @@ export const Sidebar = () => {
       <div className={s.title}>CATEGORIES</div>
       <nav>
         <ul className={s.menu}>
-          <NavLink to="/computers" className={s.link}>Computers</NavLink>
+          <NavLink to={`/categories/${1}`} className={s.link}>Computers</NavLink>
           <NavLink to="/clothes" className={s.link}>Clothes</NavLink>
           <NavLink to="/shoes" className={s.link}>Shoes</NavLink>
           <NavLink to="/furniture" className={s.link}>Furniture</NavLink>
