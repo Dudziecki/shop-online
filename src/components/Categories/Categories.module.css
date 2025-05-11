@@ -18,7 +18,7 @@
     /*border: 2px solid red;*/
     display: flex;
     gap: 20px;
-    justify-content: center; /* Центрируем элементы */
+    justify-content: space-around; /* Центрируем элементы */
 }
 
 .item {
@@ -28,8 +28,9 @@
 }
 
 .image {
-    width: 230px;
-    height: 230px;
+    width: 200px;
+    height: 200px;
+
     background-size: cover;
     background-position: center;
 }

@@ -9,13 +9,14 @@ import { selectCategory } from "@/features/categories/model/categoriesSlice.ts"
 export const Home = () => {
   const products = useAppSelector(selectProducts);
   const categories = useAppSelector(selectCategory);
+  debugger
   return (
     <div className={s.homeContainer}>
-      <Poster />
-      <div className={s.productsContainer}>
+      {/*<Poster />*/}
+      {/*<div className={s.productsContainer}>*/}
         <Products products={products} amount={5} title="Trending" />
         <Categories categories={categories} amount={5} title="Worth seeing"/>
-      </div>
+      {/*</div>*/}
     </div>
   );
 };
