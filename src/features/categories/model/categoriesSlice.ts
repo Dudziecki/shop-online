@@ -9,6 +9,9 @@ export const categoriesSlice = createAppSlice({
     list: [] as Category[],
     isLoading: false ,
   },
+  selectors:({
+    selectCategory:state=>state.list
+  }),
   reducers: create => ({
     getCategoriesTC: create.asyncThunk(
       async (_, { rejectWithValue }) => {
@@ -34,4 +37,5 @@ export const categoriesSlice = createAppSlice({
   })
 })
 export const { getCategoriesTC } = categoriesSlice.actions
+export const {selectCategory}=categoriesSlice.selectors
 export const categoriesReducer = categoriesSlice.reducer
