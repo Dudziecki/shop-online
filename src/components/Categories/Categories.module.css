@@ -1,0 +1,44 @@
+.section {
+    background-color: #191919;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.title {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}
+
+.list {
+    width: 100%;
+    /*border: 2px solid red;*/
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Центрируем элементы */
+}
+
+.item {
+    height: 100%;
+    min-height: 274px;
+    text-decoration: none;
+}
+
+.image {
+    width: 230px;
+    height: 230px;
+    background-size: cover;
+    background-position: center;
+}
+
+.name {
+    margin-top: 10px;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+}
