@@ -8,11 +8,12 @@ export const productsSlice = createAppSlice({
   initialState: {
     list: [] as Product[],
     isLoading: false ,
-    filtered:[],
+    filtered:[] as Product[],
     related:[]
   },
   selectors:{
-    selectProducts:state=>state.list
+    selectProducts:state=>state.list,
+    selectFilteredProducts:state=>state.filtered
   },
   reducers: create => ({
     getProductsTC: create.asyncThunk(
@@ -37,9 +38,12 @@ export const productsSlice = createAppSlice({
 
       },
 
-    )
+    ),
+    filterByPrice:create.reducer<number>((state, action)=>{
+      state.filtered= state.list.filter(product=>product.price < action.payload)
+    })
   })
 })
-export const { getProductsTC } = productsSlice.actions
-export const {selectProducts}=productsSlice.selectors
+export const { getProductsTC,filterByPrice} = productsSlice.actions
+export const {selectProducts,selectFilteredProducts}=productsSlice.selectors
 export const productsReducer = productsSlice.reducer
