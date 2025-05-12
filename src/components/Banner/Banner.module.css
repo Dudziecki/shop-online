@@ -1,0 +1,62 @@
+.banner{
+    background-color: #191919;
+    width: 100%;
+    margin:20px 0;
+    /*padding: 30px 22px 17px;*/
+    display: flex;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+   justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+
+}
+.content{
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 100;
+    font-size: 70px;
+    text-align: center;
+    color: #6c3eb8;
+}
+.content span{
+    display: block;
+    font-weight: 300;
+    font-size: 150px;
+    font-family: "Montserrat", sans-serif;
+}
+.more{
+    display: block;
+    background-color: #6c3eb8;
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor:pointer;
+}
+.right{
+    background-size: cover;
+    background-position: center;
+    width: 637px;
+    height: 570px; /* Пример высоты */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 24px;
+}
+.discount{
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+    color: #212123;
+}
+.discount span{
+    font-weight: 700;
+    color: #6c3eb8;
+}
