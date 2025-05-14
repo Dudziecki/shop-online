@@ -1,7 +1,7 @@
 .sidebar {
     margin-top: 20px;
     background-color: #191919;
-    width: 100%;
+    /*width: 100%;*/
     max-width: 304px;
     padding: 25px;
     display: flex;
@@ -9,8 +9,15 @@
     justify-content: space-between;
     height: auto; /* Оставляем высоту автоматической */
     font-family: "Montserrat", sans-serif;
+
+
+
+    grid-column: 1;
     grid-row: 1;
-      grid-column: 1;
+    width: 304px;
+    overflow-y: auto;
+
+    box-sizing: border-box;
 }
 
 .title {

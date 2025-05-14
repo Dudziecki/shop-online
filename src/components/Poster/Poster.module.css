@@ -1,0 +1,85 @@
+
+.home {
+    /*width: 100%;*/
+    margin-top: 20px;
+    margin-left: 20px;
+    background-color: #191919;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+
+
+    grid-column: 2;
+    grid-row: 1;
+    width: 950px;
+
+    box-sizing: border-box;
+
+
+}
+
+.title {
+    font-weight: 900;
+    font-size: 6vw;
+    text-transform: uppercase;
+    color: #f6f6f7;
+    opacity: 0.15;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 0;
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.text {
+    margin-top: 20px;
+    flex: 1;
+    padding-right: 40px;
+}
+
+.subtitle {
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #616e74;
+    margin-bottom: 10px;
+}
+
+.head {
+    font-weight: 700;
+    font-size: 2vw;
+    text-transform: uppercase;
+    color: #f6f6f7;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.button {
+    background-color: #6c3eb8;
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.image {
+    flex: 1; /* Занимает доступное пространство справа */
+    display: flex;
+    justify-content: flex-end; /* Выравниваем изображение по правому краю */
+}
+
+.image img {
+    max-width: 100%; /* Чтобы изображение не выходило за границы контейнера */
+    height: auto; /* Сохраняем пропорции изображения */
+}
