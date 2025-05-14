@@ -3,14 +3,14 @@ import "./App.css"
 import { Header } from "../Header/Header.tsx"
 import { Sidebar } from "../Sidebar/Sidebar.tsx"
 import { Footer } from "../Footer/Footer.tsx"
-import { Poster } from "@/components/Poster/Poster.tsx"
-import { Home } from "@/components/Home/Home.tsx"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
 import { useEffect } from "react"
 import { getCategoriesTC } from "@/features/categories/model/categoriesSlice.ts"
 import { getProductsTC } from "@/features/products/model/productsSlice.ts"
+import { Home } from "@/components/Home/Home.tsx"
 
 export const App = () => {
+
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(getCategoriesTC())
@@ -19,15 +19,11 @@ export const App = () => {
   return (
     <div className="App">
       <Header />
-
       <div className="wrapper">
-        <Sidebar />
-        {/*<AppRoutes />*/}
-        <Poster/>
+
+        <AppRoutes />
 
       </div>
-      <AppRoutes/>
-
       <Footer />
     </div>
   )
