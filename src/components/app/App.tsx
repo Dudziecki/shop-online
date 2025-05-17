@@ -8,17 +8,21 @@ import { useEffect } from "react"
 import { getCategoriesTC } from "@/features/categories/model/categoriesSlice.ts"
 import { getProductsTC } from "@/features/products/model/productsSlice.ts"
 import { Home } from "@/components/Home/Home.tsx"
+import { UserForm } from "@/components/User/UserForm.tsx"
+import { checkAuth } from "@/features/user/userSlice.ts"
 
 export const App = () => {
 
   const dispatch = useAppDispatch()
   useEffect(() => {
+    dispatch(checkAuth())
     dispatch(getCategoriesTC())
     dispatch(getProductsTC())
   }, [dispatch])
   return (
     <div className="App">
       <Header />
+      <UserForm/>
       <div className="wrapper">
 
         <AppRoutes />
