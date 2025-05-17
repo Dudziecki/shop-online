@@ -1,11 +1,27 @@
 import { Link } from "react-router-dom"
-import { ROUTES } from "../../utils/Routes.ts"
+import { ROUTES } from "@/common/utils/Routes.ts"
 import LOGO from "@/assets/images/LOGO.svg"
 import search from "@/assets/images/search2.svg"
 import Avatar from "@/assets/images/Avatar.svg"
 import s from "./Header.module.css"
+import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
+import { selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
+import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
+import { useEffect, useState } from "react"
 
 export const Header = () => {
+  const dispatch=useAppDispatch()
+  const currentUser=useAppSelector(selectCurrentUser)
+  const [values,setValues]=useState<{name:string,avatar:string}>({ name: "Guest", avatar: Avatar })
+  const handleClick=()=>{
+    if(!currentUser){
+      dispatch(toggleForm({isShow:true}))
+    }
+  }
+  useEffect(() => {
+if(!currentUser)return
+    setValues(currentUser)
+  },[currentUser])
   return (
     <div className={s.header}>
       <div className={s.logo}>
@@ -15,9 +31,9 @@ export const Header = () => {
       </div>
 
       <div className={s.info}>
-        <div className={s.user}>
-          <div className={s.avatar} style={{ backgroundImage: `url(${Avatar})` }} />
-          <div className={s.username}>Yana Tishchenko</div>
+        <div className={s.user} onClick={handleClick}>
+          <div className={s.avatar} style={{ backgroundImage: `url(${values.avatar})` }} />
+          <div className={s.username}>{values.name}</div>
         </div>
       </div>
 
