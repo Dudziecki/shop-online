@@ -12,5 +12,9 @@ export interface UserBody {
   email: string
   password: string
   avatar: string
-
+}
+export type UserLogin = Pick<UserBody, 'email' | 'password'>
+export interface LoginResponse{
+  access_token:string
+  refresh_token:string
 }
