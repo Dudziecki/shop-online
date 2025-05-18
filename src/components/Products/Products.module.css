@@ -1,0 +1,131 @@
+/* Products.module.css */
+
+.products {
+    width: 100%;
+    padding: 20px;
+    background-color: #191919;
+    margin: 20px 0;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    text-decoration: none;
+    color: inherit;
+    background-color: #212123;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Фиксированная высота карточки */
+}
+
+.image {
+    background-size: cover;
+    background-position: center;
+    height: 250px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.wrapper {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    height: 150px; /* Фиксированная высота для текстового блока */
+}
+
+.wrapper .title {
+    font-weight: 600;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 8px;
+    /* Ограничение текста 2 строками */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 60px; /* Минимальная высота для 2 строк */
+}
+
+.cat {
+    font-weight: 500;
+    font-size: 14px;
+    color: #b8b8b8;
+    margin-bottom: 8px;
+    /* Ограничение текста 1 строкой */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Прижмем к низу wrapper */
+}
+
+.prices {
+    display: flex;
+    align-items: center;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 18px;
+    color: #6c3eb8;
+    margin-right: 5px;
+}
+
+.oldPrice {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.purchases {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: right;
+    color: #576067;
+}
+
+.containerBtn {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #6c3eb8;
+    padding: 15px 25px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #5a2fa0;
+}
