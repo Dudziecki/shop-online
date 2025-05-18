@@ -9,6 +9,7 @@ import {
 import { UserSignUpForm } from "@/components/User/UserSignUpForm.tsx"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
 import { UserLoginForm } from "@/components/User/UserLoginForm.tsx"
+import s from "./UserStyles.module.css"
 
 
 export const UserForm = () => {
@@ -24,9 +25,9 @@ export const UserForm = () => {
   const isShow = useAppSelector(selectShowForm)
   return isShow ? (
     <>
-      <div className="overlay" onClick={closeForm}></div>
-      {formType === "signup" ? <UserSignUpForm toggleFormHandler={toggleFormHandler} closeForm={closeForm} /> :
-        <UserLoginForm  toggleFormHandler={toggleFormHandler} closeForm={closeForm} />}
+      <div className={s.overlay} onClick={closeForm}></div>
+      {formType === "signup" ? <UserSignUpForm isShow={isShow} toggleFormHandler={toggleFormHandler} closeForm={closeForm} /> :
+        <UserLoginForm isShow={isShow} toggleFormHandler={toggleFormHandler} closeForm={closeForm} />}
     </>
   ) : <></>
 }
