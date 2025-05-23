@@ -7,7 +7,7 @@ import { Products } from "@/components/Products/Products.tsx"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
 import { getRelatedProducts, selectRelatedProducts } from "@/features/products/model/productsSlice.ts"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
-
+import styles from "./SingleProduct.module.css"
 
 export const SingleProduct = () => {
   const { id } = useParams()
@@ -27,8 +27,25 @@ export const SingleProduct = () => {
       dispatch(getRelatedProducts(data.category.id))
 
   }, [data,dispatch,relatedProducts.length])
-  return ! data?(<section>Loading</section>):(
-    <div>
+  if (isLoading || !data) {
+    return (
+      <div className={styles.skeletonContainer}>
+        <div className={styles.skeletonProduct}>
+          <div className={styles.skeletonGallery}></div>
+          <div className={styles.skeletonDetails}>
+            <div className={styles.skeletonTitle}></div>
+            <div className={styles.skeletonPrice}></div>
+            <div className={styles.skeletonVariant}></div>
+            <div className={styles.skeletonVariant}></div>
+            <div className={styles.skeletonDescription}></div>
+            <div className={styles.skeletonActions}></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+  return (
+    <div className={styles.container} >
       <Product data={data} images={data?.images} title={data.title} price={data.price} description={data.description} />
       <Products products={relatedProducts} amount={5} title="Related Products" />
     </div>
