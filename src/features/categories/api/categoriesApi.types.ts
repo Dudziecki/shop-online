@@ -1,4 +1,4 @@
-export type Categories = {
+export type Category = {
   name: string
   slug: string
   image: string
