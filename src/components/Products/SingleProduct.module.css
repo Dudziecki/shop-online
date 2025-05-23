@@ -1,0 +1,87 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.skeletonContainer {
+    padding: 40px;
+    flex: 1;
+}
+
+.skeletonProduct {
+    display: flex;
+    gap: 40px;
+    background: #191919;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.skeletonGallery {
+    width: 60%;
+    height: 500px;
+    background: #212123;
+    border-radius: 12px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonDetails {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skeletonTitle {
+    height: 40px;
+    width: 80%;
+    background: #212123;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonPrice {
+    height: 32px;
+    width: 100px;
+    background: #212123;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonVariant {
+    height: 24px;
+    width: 100%;
+    background: #212123;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonDescription {
+    height: 120px;
+    width: 100%;
+    background: #212123;
+    border-radius: 4px;
+    margin-top: 30px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeletonActions {
+    height: 50px;
+    width: 100%;
+    background: #212123;
+    border-radius: 8px;
+    margin-top: 30px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
