@@ -7,21 +7,31 @@ import s from "./Header.module.css"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
 import { selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
-import { useEffect, useState } from "react"
+import { type ChangeEvent, useEffect, useState } from "react"
+import { useGetProductsQuery } from "@/features/products/product/productApi.ts"
+import type { Product } from "@/components/Products/types.ts"
 
 export const Header = () => {
-  const dispatch=useAppDispatch()
-  const currentUser=useAppSelector(selectCurrentUser)
-  const [values,setValues]=useState<{name:string,avatar:string}>({ name: "Guest", avatar: Avatar })
-  const handleClick=()=>{
-    if(!currentUser){
-      dispatch(toggleForm({isShow:true}))
+  const dispatch = useAppDispatch()
+  const currentUser = useAppSelector(selectCurrentUser)
+  const [searchValue, setSearchValue] = useState("")
+  const { data: searchResults = [], isLoading } = useGetProductsQuery(
+    { title: searchValue },
+    { skip: !searchValue }
+  );
+  const [values, setValues] = useState<{ name: string, avatar: string }>({ name: "Guest", avatar: Avatar })
+  const handleClick = () => {
+    if (!currentUser) {
+      dispatch(toggleForm({ isShow: true }))
     }
   }
+  const handleSearch=(e:ChangeEvent<HTMLInputElement>)=>{
+    setSearchValue(e.currentTarget.value)
+  }
   useEffect(() => {
-if(!currentUser)return
+    if (!currentUser) return
     setValues(currentUser)
-  },[currentUser])
+  }, [currentUser])
   return (
     <div className={s.header}>
       <div className={s.logo}>
@@ -47,11 +57,31 @@ if(!currentUser)return
             name="search"
             placeholder="Search for anything..."
             autoComplete="off"
-            onChange={() => {
-            }}
-            value=""
+            onChange={handleSearch}
+            value={searchValue}
           />
         </div>
+        {searchValue && (
+          <div className={s.box}>
+            {isLoading ? "Loading" : !searchResults.length ? "No results" : (
+              searchResults.map((el: Product) => (
+                <Link
+                  key={el.id}
+                  onClick={() => setSearchValue("")}
+                  className={s.item}
+                  to={`/products/${el.id}`}
+                >
+                  <div
+                    className={s.image}
+                    style={{ backgroundImage: `url(${el.images[0]})` }}
+                  />
+                  <div className={s.title}>{el.title}</div>
+                </Link>
+              ))
+            )}
+          </div>
+        )}
+
       </form>
 
       <div className={s.account}>
@@ -78,6 +108,6 @@ if(!currentUser)return
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
