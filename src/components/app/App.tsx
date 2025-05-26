@@ -24,9 +24,7 @@ export const App = () => {
       <Header />
       <UserForm/>
       <div className="wrapper">
-
         <AppRoutes />
-
       </div>
       <Footer />
     </div>
