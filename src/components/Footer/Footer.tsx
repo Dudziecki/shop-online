@@ -1,6 +1,6 @@
 import s from "@/components/Footer/Footer.module.css"
 import { Link } from "react-router-dom"
-import { ROUTES } from "@/utils/Routes.ts"
+import { ROUTES } from "@/common/utils/Routes.ts"
 import LOGO from "@/assets/images/LOGO.svg"
 
 
