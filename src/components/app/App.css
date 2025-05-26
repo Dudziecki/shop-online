@@ -1,21 +1,13 @@
 .App {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    max-width: 1274px;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
-    /*background-color: #212123;*/
+    min-height: 100vh;
 }
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    margin-bottom:20px;
+    flex: 1;
 }
-.wrapper:first-child{
-
-}
-
-/*.container {*/
-/*    padding: 20px; !* Добавим общие отступы для контента *!*/
-/*}*/
