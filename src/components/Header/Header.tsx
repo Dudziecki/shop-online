@@ -5,7 +5,7 @@ import search from "@/assets/images/search2.svg"
 import Avatar from "@/assets/images/Avatar.svg"
 import s from "./Header.module.css"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
-import { selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
+import { selectCart, selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
 import { type ChangeEvent, useEffect, useState } from "react"
 import { useGetProductsQuery } from "@/features/products/product/productApi.ts"
@@ -14,6 +14,8 @@ import type { Product } from "@/components/Products/types.ts"
 export const Header = () => {
   const dispatch = useAppDispatch()
   const currentUser = useAppSelector(selectCurrentUser)
+  const cart = useAppSelector(selectCart)
+
   const [searchValue, setSearchValue] = useState("")
   const { data: searchResults = [], isLoading } = useGetProductsQuery(
     { title: searchValue },
@@ -85,7 +87,7 @@ export const Header = () => {
       </form>
 
       <div className={s.account}>
-        <Link to={ROUTES.HOME}>
+        <Link to={ROUTES.FAVOURITES}>
           <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M3 11C0.75 8 1.5 3.5 5.25 2C9 0.5 11.25 3.5 12 5C12.75 3.5 15.75 0.5 19.5 2C23.25 3.5 23.25 8 21 11C18.75 14 12 20 12 20C12 20 5.25 14 3 11Z"
@@ -104,7 +106,8 @@ export const Header = () => {
               fill="#B8B8B8"
             />
           </svg>
-          <span className={s.count}>1</span>
+          {!!cart.length && <span className={s.count}>{cart.length}</span>}
+
         </Link>
       </div>
     </div>
