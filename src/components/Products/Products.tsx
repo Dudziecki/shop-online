@@ -7,15 +7,17 @@ export interface ProductsProps {
   title?: string;
   products: Product[];
   styles?: React.CSSProperties;
+  loadMore?:()=>void
   amount?: number; // amount теперь может быть undefined
 }
 
-export const Products: React.FunctionComponent<ProductsProps> = ({ products, title, styles, amount }) => {
+export const Products: React.FunctionComponent<ProductsProps> = ({ products, title, styles, amount,loadMore }) => {
 
   const limit = amount ?? products.length
   const list = products.filter((_, i) => i < limit)
 
 
+  // @ts-ignore
   return (
     <section className={s.products} style={styles}>
       {title && <h2 className={s.title}>{title}</h2>}
@@ -44,7 +46,7 @@ export const Products: React.FunctionComponent<ProductsProps> = ({ products, tit
         ))}
       </div>
       <div className={s.containerBtn}>
-        <button className={s.btn}>See more</button>
+        <button className={s.btn} onClick={loadMore}>See more</button>
       </div>
 
     </section>
