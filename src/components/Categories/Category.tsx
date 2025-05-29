@@ -69,8 +69,9 @@ export const Category = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setItems([])
     setParams({
-      ...params,
+      ...defaultParams,
       title: values.title,
       price_min: Number(values.price_min),
       price_max: Number(values.price_max)
@@ -117,6 +118,7 @@ export const Category = () => {
               className={styles.input}
               min="0"
             />
+
           </div>
 
           <div className={styles.filter}>
@@ -130,6 +132,7 @@ export const Category = () => {
               min="0"
             />
           </div>
+
         </div>
 
         <div className={styles.buttons}>
