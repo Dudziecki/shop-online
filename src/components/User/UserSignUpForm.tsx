@@ -14,9 +14,9 @@ export const UserSignUpForm: FC<UserSignUpFormProps> = ({ closeForm, toggleFormH
   const dispatch = useAppDispatch()
   const [values, setValues] = useState<UserBody>({
     email: "",
-    avatar: "",
+    password: "",
     name: "",
-    password: ""
+    avatar: ""
   })
 
   const handleChange = ({ target: { value, name } }: { target: { value: string, name: string } }) => {
