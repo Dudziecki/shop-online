@@ -3,7 +3,7 @@ import type { Product } from "@/features/products/api/productsApi.types.ts"
 import { userApi } from "@/features/user/api/userApi.ts"
 import type { UpdateRequest, UserBody, UserLogin, UserResponse } from "@/features/user/api/userApi.types.ts"
 
-interface CartItem extends Pick<Product, "id"> {
+export interface CartItem extends Pick<Product, "id"> {
   quantity: number;
   product: Product;
 }
@@ -54,6 +54,15 @@ export const userSlice = createAppSlice({
           product
         })
       }
+    }),
+    updateCartItemQuantity: create.reducer<{ id: number; quantity: number }>((state, action) => {
+      const { id, quantity } = action.payload;
+      state.cart = state.cart.map(item =>
+        item.id === id ? { ...item, quantity } : item
+      );
+    }),
+    removeFromCart: create.reducer<number>((state, action) => {
+      state.cart = state.cart.filter(item => item.id !== action.payload);
     }),
     toggleForm: create.reducer<{ isShow: boolean }>((state, action) => {
       state.showForm = action.payload.isShow
@@ -180,7 +189,9 @@ export const {
   toggleFormType,
   checkAuth,
   updateUserTC,
-  logout
+  logout,
+  removeFromCart,
+  updateCartItemQuantity
 } = userSlice.actions
 
 export const {
