@@ -5,35 +5,56 @@ import search from "@/assets/images/search2.svg"
 import Avatar from "@/assets/images/Avatar.svg"
 import s from "./Header.module.css"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
-import { selectCart, selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
+import { logout, selectCart, selectCurrentUser, toggleForm } from "@/features/user/userSlice.ts"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
-import { type ChangeEvent, useEffect, useState } from "react"
+import { type ChangeEvent, useEffect, useRef, useState } from "react"
 import { useGetProductsQuery } from "@/features/products/product/productApi.ts"
 import type { Product } from "@/components/Products/types.ts"
 
 export const Header = () => {
-  const dispatch = useAppDispatch()
-  const currentUser = useAppSelector(selectCurrentUser)
-  const cart = useAppSelector(selectCart)
-
-  const [searchValue, setSearchValue] = useState("")
+  const dispatch = useAppDispatch();
+  const currentUser = useAppSelector(selectCurrentUser);
+  const cart = useAppSelector(selectCart);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [searchValue, setSearchValue] = useState("");
   const { data: searchResults = [], isLoading } = useGetProductsQuery(
     { title: searchValue },
     { skip: !searchValue }
   );
-  const [values, setValues] = useState<{ name: string, avatar: string }>({ name: "Guest", avatar: Avatar })
+
   const handleClick = () => {
     if (!currentUser) {
-      dispatch(toggleForm({ isShow: true }))
+      dispatch(toggleForm({ isShow: true }));
+    } else {
+      setDropdownOpen(!dropdownOpen);
     }
-  }
-  const handleSearch=(e:ChangeEvent<HTMLInputElement>)=>{
-    setSearchValue(e.currentTarget.value)
-  }
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    setDropdownOpen(false);
+  };
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value);
+  };
+
   useEffect(() => {
-    if (!currentUser) return
-    setValues(currentUser)
-  }, [currentUser])
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+
+
   return (
     <div className={s.header}>
       <div className={s.logo}>
@@ -42,10 +63,32 @@ export const Header = () => {
         </Link>
       </div>
 
+
       <div className={s.info}>
-        <div className={s.user} onClick={handleClick}>
-          <div className={s.avatar} style={{ backgroundImage: `url(${values.avatar})` }} />
-          <div className={s.username}>{values.name}</div>
+        <div className={s.user} onClick={handleClick} ref={dropdownRef}>
+          <div
+            className={s.avatar}
+            style={{ backgroundImage: `url(${currentUser?.avatar || Avatar})` }}
+          />
+          <div className={s.username}>{currentUser?.name || "Guest"}</div>
+
+          {currentUser && dropdownOpen && (
+            <div className={s.dropdown}>
+              <Link
+                to={ROUTES.PROFILE}
+                className={s.dropdownItem}
+                onClick={() => setDropdownOpen(false)}
+              >
+                Edit Profile
+              </Link>
+              <div
+                className={s.dropdownItem}
+                onClick={handleLogout}
+              >
+                Logout
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
