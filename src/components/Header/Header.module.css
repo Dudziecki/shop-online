@@ -202,3 +202,33 @@
 .box::-webkit-scrollbar-thumb:hover {
     background: #5808bc;
 }
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #212123;
+    border-radius: 8px;
+    padding: 10px 0;
+    min-width: 160px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    margin-top: 10px;
+}
+
+.dropdownItem {
+    display: block;
+    padding: 8px 16px;
+    color: #b8b8b8;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.dropdownItem:hover {
+    background: #6c3eb8;
+    color: white;
+}
+
+.user {
+    position: relative;
+    cursor: pointer;
+}
