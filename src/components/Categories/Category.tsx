@@ -41,7 +41,6 @@ export const Category = () => {
   useEffect(() => {
     if (isLoading || !data) return
 
-    // Type guard to ensure data is Product[]
     const isProductArray = (arr: unknown): arr is Product[] => {
       return Array.isArray(arr) && arr.every(item =>
         typeof item === 'object' &&
@@ -92,7 +91,7 @@ export const Category = () => {
   }
 
   return (
-    <section className={styles.category}>
+    <section className={styles.section}>
       <h2 className={styles.title}>{cat}</h2>
 
       <form className={styles.filters} onSubmit={handleSubmit}>
@@ -118,7 +117,6 @@ export const Category = () => {
               className={styles.input}
               min="0"
             />
-
           </div>
 
           <div className={styles.filter}>
@@ -132,11 +130,13 @@ export const Category = () => {
               min="0"
             />
           </div>
-
         </div>
 
         <div className={styles.buttons}>
-          <button type="submit" className={styles.button}>
+          <button
+            type="submit"
+            className={styles.button}
+          >
             Apply filters
           </button>
           <button
@@ -168,7 +168,6 @@ export const Category = () => {
       ) : (
         <>
           <Products products={items} title={""} styles={{ padding: 0 }} amount={items.length} loadMore={loadMore} />
-
         </>
       )}
     </section>
