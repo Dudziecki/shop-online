@@ -1,0 +1,291 @@
+.product {
+    display: flex;
+    gap: 40px;
+    padding: 40px;
+    background: #191919;
+    color: #fff;
+    border-radius: 16px;
+    margin: 40px 0;
+}
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    width: 60%;
+}
+
+.mainImage {
+    width: 500px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail:hover {
+    border-color: #6c3eb8;
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: #6c3eb8;
+    transform: scale(1.05);
+}
+
+.details {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.price {
+    font-size: 28px;
+    font-weight: 700;
+    color: #6c3eb8;
+}
+
+.discount {
+    font-size: 20px;
+    color: #b8b8b8;
+    text-decoration: line-through;
+}
+
+.variant {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.variantLabel {
+    font-size: 16px;
+    color: #b8b8b8;
+}
+
+.variantValue {
+    font-size: 18px;
+    color: #fff;
+}
+
+.sizeOptions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.size {
+    padding: 8px 16px;
+    background: #212123;
+    border: 1px solid #616E74;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.size:hover {
+    border-color: #6c3eb8;
+}
+
+.size.activeSize {
+    background: #6c3eb8;
+    border-color: #6c3eb8;
+    color: #fff;
+}
+
+.description {
+    margin-top: 30px;
+}
+
+.descriptionTitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.description p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #b8b8b8;
+    margin-bottom: 15px;
+}
+
+.features {
+    padding-left: 20px;
+    color: #b8b8b8;
+    list-style-type: none;
+}
+
+.features li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.features li::before {
+    content: '•';
+    color: #6c3eb8;
+    position: absolute;
+    left: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.addToCart, .addToFavorites {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.addToCart {
+    background: #6c3eb8;
+    color: #fff;
+}
+
+.addToCart:hover {
+    background: #5a2fa0;
+}
+
+.addToCart:disabled {
+    background: #3a3a3a;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.addToFavorites {
+    background: transparent;
+    color: #6c3eb8;
+    border: 1px solid #6c3eb8;
+}
+
+.addToFavorites:hover {
+    background: rgba(108, 62, 184, 0.1);
+}
+
+.addToFavorites.favorite {
+    background: #6c3eb8;
+    color: white;
+    border-color: #6c3eb8;
+}
+
+.addToFavorites.favorite:hover {
+    background: #5a2fa0;
+}
+
+.addToFavorites:disabled {
+    border-color: #3a3a3a;
+    color: #3a3a3a;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #212123;
+}
+
+.stockInfo {
+    font-size: 14px;
+    color: #616E74;
+}
+
+.returnLink {
+    color: #6c3eb8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.returnLink:hover {
+    color: #5a2fa0;
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .product {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .gallery, .details {
+        width: 100%;
+    }
+
+    .mainImage {
+        width: 100%;
+        height: 400px;
+    }
+
+    .thumbnails {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    .product {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .price {
+        font-size: 24px;
+    }
+
+    .discount {
+        font-size: 16px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+}
