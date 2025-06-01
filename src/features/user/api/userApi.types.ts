@@ -7,14 +7,21 @@ export interface UserResponse {
   id: number
 }
 
+export type UpdateRequest = Omit<UserResponse, 'role'>
+
 export interface UserBody {
   name: string
   email: string
   password: string
   avatar: string
 }
-export type UserLogin = Pick<UserBody, 'email' | 'password'>
-export interface LoginResponse{
-  access_token:string
-  refresh_token:string
+
+export type UserLogin = {
+  email: string
+  password: string
+}
+
+export interface LoginResponse {
+  access_token: string
+  refresh_token: string
 }
