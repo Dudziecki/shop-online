@@ -1,31 +1,72 @@
-import { type FC, type FormEvent, useState } from "react"
+import { type FC, type FormEvent, useState, useEffect } from "react"
 import { loginUserTC } from "@/features/user/userSlice.ts"
+
+import s from "./UserStyles.module.css"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
-import s from "./UserStyles.module.css" // Importing the same CSS module
+import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
 
 type UserSignUpFormProps = {
   closeForm: () => void
-  toggleFormHandler: (type: string) => void
-  isShow:boolean
+  toggleFormHandler: (type: "signup" | "login") => void
+  isShow: boolean
 }
 
-export const UserLoginForm: FC<UserSignUpFormProps> = ({ closeForm, toggleFormHandler,isShow }) => {
+export const UserLoginForm: FC<UserSignUpFormProps> = ({
+                                                         closeForm,
+                                                         toggleFormHandler,
+                                                         isShow
+                                                       }) => {
   const dispatch = useAppDispatch()
-  const [values, setValues] = useState<{email: string, password: string}>({
+  const error = useAppSelector(state => state.user.error)
+  const isLoading = useAppSelector(state => state.user.isLoading)
+
+  const [values, setValues] = useState({
     email: "",
     password: ""
   })
+  const [formError, setFormError] = useState("")
 
-  const handleChange = ({ target: { value, name } }: { target: { value: string, name: string } }) => {
+  useEffect(() => {
+    // Очищаем ошибку при открытии/закрытии формы
+    setFormError("")
+  }, [isShow])
+
+  const handleChange = ({ target: { value, name } }: {
+    target: { value: string, name: string }
+  }) => {
     setValues({ ...values, [name]: value })
+    // Очищаем ошибку при изменении полей
+    if (formError) setFormError("")
   }
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const isEmpty = Object.values(values).some(val => !val)
-    if (isEmpty) return
-    dispatch(loginUserTC(values))
-    closeForm()
+
+    // Валидация полей
+    if (!values.email || !values.password) {
+      setFormError("Please fill in all fields")
+      return
+    }
+
+    // Проверка формата email
+    if (!/\S+@\S+\.\S+/.test(values.email)) {
+      setFormError("Please enter a valid email address")
+      return
+    }
+
+    try {
+      const resultAction = await dispatch(loginUserTC(values))
+
+      if (loginUserTC.rejected.match(resultAction)) {
+        // Ошибка из API
+        setFormError(resultAction.payload as string || "Login failed")
+      } else {
+        // Успешный вход - закрываем форму
+        closeForm()
+      }
+    } catch (err) {
+      setFormError("An unexpected error occurred")
+    }
   }
 
   return (
@@ -38,6 +79,14 @@ export const UserLoginForm: FC<UserSignUpFormProps> = ({ closeForm, toggleFormHa
       </div>
 
       <div className={s.title}>Sign In</div>
+
+      {/* Блок для отображения ошибок */}
+      {formError && (
+        <div className={s.error}>
+          {formError}
+        </div>
+      )}
+
       <form className={s.form} onSubmit={handleSubmit}>
         <div className={s.group}>
           <input
@@ -68,8 +117,13 @@ export const UserLoginForm: FC<UserSignUpFormProps> = ({ closeForm, toggleFormHa
         <div className={s.link} onClick={() => toggleFormHandler("signup")}>
           Create an account
         </div>
-        <button type="submit" className={s.submit}>
-          Login
+
+        <button
+          type="submit"
+          className={s.submit}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Loading...' : 'Login'}
         </button>
       </form>
     </div>
