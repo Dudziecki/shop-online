@@ -1,7 +1,8 @@
 import { createAppSlice } from "@/common/hooks/createAppSlice.ts"
-import type { Product } from "@/features/products/api/productsApi.types.ts"
+
 import { userApi } from "@/features/user/api/userApi.ts"
-import type { UpdateRequest, UserBody, UserLogin, UserResponse } from "@/features/user/api/userApi.types.ts"
+import type { UpdateRequest, UserBody, UserLogin } from "@/features/user/api/userApi.types.ts"
+import type { Product } from "@/components/Products/types.ts"
 
 export interface CartItem extends Pick<Product, "id"> {
   quantity: number;
