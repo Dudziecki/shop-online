@@ -7,9 +7,10 @@ export interface UserResponse {
   id: number
 }
 
-export type UpdateRequest = Omit<UserResponse, 'role'>
+export type UpdateRequest = Omit<UserResponse, "role">
 
 export interface UserBody {
+  id?: number
   name: string
   email: string
   password: string
