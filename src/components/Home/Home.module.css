@@ -1,8 +1,4 @@
-.homeContainer {
-    /*margin-left:40px;*/
-    /*display: block; !* Убираем flex, чтобы блоки шли друг под другом *!*/
-    width: 100%;
-}
+
 
 .gridContainer {
     display: grid;
@@ -18,7 +14,7 @@
     grid-row: 2;
     width: 1274px;
     margin: 0 auto;
-    padding: 20px 0;
+    /*padding: 20px 0;*/
 }
 
 .bottom > * {
@@ -34,11 +30,11 @@
         max-width: 100%; /* На маленьких экранах продукты занимают всю ширину */
     }
 }
-.homeContainer {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
+/*.homeContainer {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 100%;*/
+/*}*/
 
 
 .bottom {

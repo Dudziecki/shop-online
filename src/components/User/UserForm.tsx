@@ -19,7 +19,7 @@ export const UserForm = () => {
   const closeForm = () => {
     dispatch(toggleForm({ isShow: false }))
   }
-  const toggleFormHandler = (formType: string) => {
+  const toggleFormHandler = (formType: "signup" | "login") => {
     dispatch(toggleFormType({ formType }))
   }
   const isShow = useAppSelector(selectShowForm)

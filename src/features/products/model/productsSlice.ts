@@ -10,12 +10,14 @@ export const productsSlice = createAppSlice({
     list: [] as Product[],
     isLoading: false ,
     filtered:[] as Product[],
-    related:[]as Product[]
+    related:[]as Product[],
+    favorites: [] as Product[]
   },
   selectors:{
     selectProducts:state=>state.list,
     selectFilteredProducts:state=>state.filtered,
-    selectRelatedProducts:state=>state.related
+    selectRelatedProducts:state=>state.related,
+    selectFavorites: state => state.favorites
   },
   reducers: create => ({
     getProductsTC: create.asyncThunk(
@@ -47,9 +49,23 @@ export const productsSlice = createAppSlice({
     getRelatedProducts:create.reducer<number>((state, action)=>{
       const list= state.list.filter(product=>product.category.id === action.payload)
       state.related=shuffle(list)
+    }),
+    addToFavorites: create.reducer<Product>((state, action) => {
+      if (!state.favorites.some(item => item.id === action.payload.id)) {
+        state.favorites.push(action.payload)
+      }
+    }),
+    toggleFavorite: create.reducer<Product>((state, action) => {
+      const existingIndex = state.favorites.findIndex(item => item.id === action.payload.id)
+      if (existingIndex >= 0) {
+        state.favorites.splice(existingIndex, 1)
+      } else {
+        state.favorites.push(action.payload)
+      }
     })
+
   })
 })
-export const { getProductsTC,filterByPrice,getRelatedProducts} = productsSlice.actions
-export const {selectProducts,selectFilteredProducts,selectRelatedProducts}=productsSlice.selectors
+export const { getProductsTC,filterByPrice,getRelatedProducts,addToFavorites,toggleFavorite} = productsSlice.actions
+export const {selectProducts,selectFilteredProducts,selectRelatedProducts,selectFavorites}=productsSlice.selectors
 export const productsReducer = productsSlice.reducer

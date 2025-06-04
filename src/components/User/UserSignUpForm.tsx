@@ -6,7 +6,7 @@ import s from "./UserStyles.module.css" // Changed to module CSS
 
 type UserSignUpFormProps = {
   closeForm: () => void
-  toggleFormHandler: (type: string) => void
+  toggleFormHandler: (type:  "signup" | "login") => void
   isShow:boolean
 }
 
