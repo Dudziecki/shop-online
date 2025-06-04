@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { type ChangeEvent, type FormEvent, useEffect, useState } from "react"
 import { useGetProductsQuery } from "@/features/products/product/productApi.ts"
-import { Products } from "@/components/Products/Products.tsx"
+import { Products } from "@/components/Products/Products/Products.tsx"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
 import { selectCategory } from "@/features/categories/model/categoriesSlice.ts"
 import styles from './Category.module.css'
