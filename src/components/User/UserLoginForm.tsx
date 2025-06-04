@@ -17,7 +17,7 @@ export const UserLoginForm: FC<UserSignUpFormProps> = ({
                                                          isShow
                                                        }) => {
   const dispatch = useAppDispatch()
-  const error = useAppSelector(state => state.user.error)
+  // const error = useAppSelector(state => state.user.error)
   const isLoading = useAppSelector(state => state.user.isLoading)
 
   const [values, setValues] = useState({
@@ -70,11 +70,14 @@ export const UserLoginForm: FC<UserSignUpFormProps> = ({
   }
 
   return (
-    <div className={`${s.wrapper} ${isShow ? s.wrapperVisible : ''}`}>
+    <div className={`${s.wrapper} ${isShow ? s.wrapperVisible : ""}`}>
       <div className={s.close} onClick={closeForm}>
-        <svg className={s.icon} width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.375 1.375L12.625 12.625" stroke="#576067" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M1.375 12.625L12.625 1.375" stroke="#576067" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg className={s.icon} width="14" height="14" viewBox="0 0 14 14" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.375 1.375L12.625 12.625" stroke="#576067" strokeWidth="2" strokeLinecap="round"
+                strokeLinejoin="round" />
+          <path d="M1.375 12.625L12.625 1.375" stroke="#576067" strokeWidth="2" strokeLinecap="round"
+                strokeLinejoin="round" />
         </svg>
       </div>
 
@@ -123,7 +126,7 @@ export const UserLoginForm: FC<UserSignUpFormProps> = ({
           className={s.submit}
           disabled={isLoading}
         >
-          {isLoading ? 'Loading...' : 'Login'}
+          {isLoading ? "Loading..." : "Login"}
         </button>
       </form>
     </div>
