@@ -1,11 +1,5 @@
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
-import {
-  selectCurrentUser,
-  selectFormType,
-  selectShowForm,
-  toggleForm,
-  toggleFormType
-} from "@/features/user/userSlice.ts"
+import { selectFormType, selectShowForm, toggleForm, toggleFormType } from "@/features/user/userSlice.ts"
 import { UserSignUpForm } from "@/components/User/UserSignUpForm.tsx"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
 import { UserLoginForm } from "@/components/User/UserLoginForm.tsx"
