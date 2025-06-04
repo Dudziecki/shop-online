@@ -1,16 +1,9 @@
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
-import {
-  addItemToCart,
-  selectCart,
-  updateCartItemQuantity,
-  removeFromCart,
-  selectError
-} from "@/features/user/userSlice.ts"
+import type { CartItem } from "@/features/user/userSlice.ts"
+import { removeFromCart, selectCart, selectError, updateCartItemQuantity } from "@/features/user/userSlice.ts"
 import { sumBy } from "@/common/utils/sunBy.ts"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
-import type { CartItem } from "@/features/user/userSlice.ts"
 import styles from "./Cart.module.css"
-import { useEffect, useState } from "react"
 
 export const Cart = () => {
   const dispatch = useAppDispatch()
