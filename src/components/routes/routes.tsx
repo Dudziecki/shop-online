@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom"
 import { ROUTES } from "@/common/utils/Routes.ts"
 import { Home } from "../Home/Home.tsx"
-import { App } from "@/components/app/App.tsx"
-import { SingleProduct } from "@/components/Products/SingleProduct.tsx"
-import { Profile } from "@/components/Profile/Profile.tsx"
+import { SingleProduct } from "@/components/Products/SingleProduct/SingleProduct.tsx"
 import { SingleCategory } from "@/components/Categories/SingleCategory.tsx"
 import { Cart } from "@/components/Cart/Cart.tsx"
 import { Favourites } from "@/components/Favourites/Favourites.tsx"
 import { HelpPage } from "@/components/HelpPage/HelpPage.tsx"
-import { ShopNowProduct, ShowNowProduct } from "@/components/ShopNowProduct/ShowNowProduct.tsx"
+import { ShopNowProduct } from "@/components/ShopNowProduct/ShowNowProduct.tsx"
 import { ProfileForm } from "@/components/User/ProfileForm/ProfileForm.tsx"
 
 export const AppRoutes = () => {
