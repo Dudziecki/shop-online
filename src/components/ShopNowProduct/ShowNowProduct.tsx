@@ -17,14 +17,18 @@ const productImages = [
 const LENNON_R2D2_PRODUCT = {
   id: 1,
   title: "LENNON r2d2 with NVIDIA 5090 TI",
+  slug: "lennon-r2d2-nvidia-5090-ti",
   price: 1999.99,
-  description: "The ultimate gaming PC with NVIDIA 5090 TI graphics card. Experience unparalleled performance with the latest technology. Perfect for 8K gaming and professional workloads. Features liquid cooling system, RGB lighting, and ultra-fast SSD storage.",
+  description: "The ultimate gaming PC with NVIDIA 5090 TI graphics card...",
   category: {
     id: 1,
-    name: "Computers"
+    name: "Computers",
+    image: "string",
+    slug: "computers",
   },
   images: productImages
 }
+
 
 const SIZES = [4.5, 5, 5.5]
 
@@ -40,7 +44,7 @@ export const ShopNowProduct = () => {
     if (!currentSize) return
     dispatch(addItemToCart({
       product: LENNON_R2D2_PRODUCT,
-      size: currentSize
+
     }))
   }
 
