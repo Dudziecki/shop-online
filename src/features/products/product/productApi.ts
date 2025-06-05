@@ -1,4 +1,4 @@
-import { type BaseQueryArg, createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
 import { BASE_URL } from "@/common/constants/constants.ts"
 import type { Product } from "@/components/Products/types.ts"
 import { buildUrl } from "@/common/utils/buildUrl.ts"
