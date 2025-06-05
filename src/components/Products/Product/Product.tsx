@@ -4,7 +4,7 @@ import styles from "./Product.module.css"
 import { useAppDispatch } from "@/common/hooks/useAppDispatch.ts"
 import { useEffect, useState } from "react"
 import { addItemToCart } from "@/features/user/userSlice.ts"
-import type { Product as ProductType } from "@/features/products/api/productsApi.types.ts"
+import type { Product as ProductType } from "../types.ts"
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
 import { selectFavorites, toggleFavorite } from "@/features/products/model/productsSlice.ts"
 
@@ -30,7 +30,7 @@ export const Product: React.FC<ProductProps> = ({ images, title, price, descript
     if (!currentSize) return
     dispatch(addItemToCart({
       product: data,
-      size: currentSize
+      // size: currentSize
     }))
   }
 
