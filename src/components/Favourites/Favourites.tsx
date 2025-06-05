@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/common/hooks/useAppSelector.ts"
-import { Products } from "@/components/Products/Products.tsx"
+import { Products } from "@/components/Products/Products/Products.tsx"
 import { selectFavorites } from "@/features/products/model/productsSlice.ts"
 import styles from "./Favourites.module.css"
 
