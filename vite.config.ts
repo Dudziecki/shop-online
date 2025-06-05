@@ -18,6 +18,4 @@ interface ImportMetaEnv {
   // Другие переменные, если есть
 }
 
-interface ImportMeta {
-  readonly env: ImportMetaEnv
-}
+
